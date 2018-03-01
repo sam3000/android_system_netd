@@ -873,6 +873,28 @@ int CommandListener::BandwidthControlCmd::runCommand(SocketClient *cli, int argc
         sendGenericOkFail(cli, rc);
         return 0;
     }
+    if (!strcmp(argv[1], "addrestrictappsoninterface")) {
+        if (argc < 5) {
+            sendGenericSyntaxError(cli, "addrestrictappsoninterface <usecasekey> "
+                                        "<interface> <appUid> ...");
+            return 0;
+        }
+        int rc = gCtls->bandwidthCtrl.addRestrictAppsOnInterface(argv[2], argv[3],
+                                                                 argc - 4, argv + 4);
+        sendGenericOkFail(cli, rc);
+        return 0;
+    }
+    if (!strcmp(argv[1], "removerestrictappsoninterface")) {
+        if (argc < 5) {
+            sendGenericSyntaxError(cli, "removerestrictappsoninterface <usecasekey> "
+                                        "<interface> <appUid> ...");
+            return 0;
+        }
+        int rc = gCtls->bandwidthCtrl.removeRestrictAppsOnInterface(argv[2], argv[3],
+                                                                    argc - 4, argv + 4);
+        sendGenericOkFail(cli, rc);
+        return 0;
+    }
     if (!strcmp(argv[1], "setglobalalert") || !strcmp(argv[1], "sga")) {
         if (argc != 3) {
             sendGenericSyntaxError(cli, "setglobalalert <bytes>");
