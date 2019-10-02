@@ -54,8 +54,6 @@ public:
 
     int addRestrictAppsOnData(const std::string& iface, int numUids, char *appUids[]);
     int removeRestrictAppsOnData(const std::string& iface, int numUids, char *appUids[]);
-    int addRestrictAppsOnVpn(const std::string& iface, int numUids, char *appUids[]);
-    int removeRestrictAppsOnVpn(const std::string& iface, int numUids, char *appUids[]);
     int addRestrictAppsOnWlan(const std::string& iface, int numUids, char *appUids[]);
     int removeRestrictAppsOnWlan(const std::string& iface, int numUids, char *appUids[]);
 
@@ -156,7 +154,6 @@ public:
     std::set<std::string> mSharedQuotaIfaces;
 
     std::vector<int /*appUid*/> restrictAppUidsOnData;
-    std::vector<int /*appUid*/> restrictAppUidsOnVpn;
     std::vector<int /*appUid*/> restrictAppUidsOnWlan;
 };
 
